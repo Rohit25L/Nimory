@@ -1,0 +1,44 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import Body from "./components/Body";
+import About from "../src/Routes/About";
+import Anime from "./Routes/Anime.jsx";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import { lazy,Suspense} from "react";
+import Simmer from "./components/Simmers.jsx";
+
+const Manga =lazy(()=>import("../src/Routes/Manga.jsx"))
+const Movies =lazy(()=>import("./Routes/Movies.jsx"))
+let route = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/movies",
+        element: <Suspense fallback={<h1>loading...</h1>}><Movies /></Suspense>,
+      },
+      {
+        path: "/manga",
+        element: <Suspense fallback={<Simmer/>}><Manga /></Suspense>,
+      },
+      {
+        path: "/anime/:l_id",
+        element: <Anime />,
+      },
+    ],
+  },
+]);
+createRoot(document.getElementById("root")).render(
+  <RouterProvider router={route}></RouterProvider>
+);
