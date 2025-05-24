@@ -62,7 +62,7 @@ const SearchBar = () => {
           <div className="pt-7 pl-2 pr-2 ">
             {data.map((data) => {
               return (
-                <Link to={"/anime/"+data?.mal_id} key={data?.mal_id} onFocus={handelDiv}><ChildSearch
+                <Link to={"/anime/"+data?.mal_id} key={data?.mal_id} onClick={handelDiv}><ChildSearch
                   id={data?.mal_id}
                   img={data?.images?.jpg?.image_url}
                   title={data?.title_english}

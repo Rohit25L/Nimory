@@ -9,14 +9,16 @@ import { useSelector } from "react-redux";
 
 const Body = () => {
 
+
   const photos = useSelector((e)=>e.apiData)
+  console.log(photos)
   return photos.length ==0?(
     <Simmer/>
   ):(
     <div className="app-container">
     <div className="headcon">
       <div className="top-section part1">
-        {photos.slice(0, 1).map((photo) => (
+        {photos.slice(2,3).map((photo) => (
           <Card
             key={photo?.mal_id}
             image={photo?.trailer?.images?.large_image_url}
@@ -27,7 +29,7 @@ const Body = () => {
         ))}
       </div>
      <div className="top-section part2">
-        {photos.slice(5, 6).map((photo) => (
+        {photos.slice(3, 4).map((photo) => (
           <Card
             key={photo?.mal_id}
             image={photo?.trailer?.images?.large_image_url}
