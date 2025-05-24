@@ -4,11 +4,12 @@ import Bcard from "./Bcard"
 import Simmer from "./Simmers";
 import { Link } from "react-router";
 import { TopAnimeApi } from "../../utilis/constnce";
-import useMain from "../../utilis/useMain";
+import { useSelector } from "react-redux";
+
 
 const Body = () => {
 
-  const photos = useMain(TopAnimeApi)
+  const photos = useSelector((e)=>e.apiData)
   return photos.length ==0?(
     <Simmer/>
   ):(
@@ -39,7 +40,7 @@ const Body = () => {
       </div>
       <div className="horizontal-scroll">
         {photos.slice(0).map((photo) => (
-          <Link className="linkre" to={"/anime/"+photo?.mal_id}key={photo?.mal_id}><Bcard
+          <Link className="linkre" to={"/anime/"+photo?.malid}key={photo?.mal_id}><Bcard
             image={photo?.images.jpg.image_url}
             title={photo?.title}
             episodes={photo?.episodes}

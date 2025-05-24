@@ -8,6 +8,9 @@ import Anime from "./Routes/Anime.jsx";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import { lazy,Suspense} from "react";
 import Simmer from "./components/Simmers.jsx";
+import Chipsinput from "./components/Chipsinput.jsx";
+import Bookmark from "./components/Bookmark.jsx";
+
 
 const Manga =lazy(()=>import("../src/Routes/Manga.jsx"))
 const Movies =lazy(()=>import("./Routes/Movies.jsx"))
@@ -36,6 +39,15 @@ let route = createBrowserRouter([
         path: "/anime/:l_id",
         element: <Anime />,
       },
+           {
+        path: "/input",
+        element: <Chipsinput />,
+      },
+      {
+        path: "/bookmark",
+        element: <Bookmark />,
+      },
+
     ],
   },
 ]);

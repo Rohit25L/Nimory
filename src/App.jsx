@@ -5,16 +5,24 @@ import Body from "./components/Body";
 import About from "../src/Routes/About";
 import Footer from "./components/Footer";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import { Provider } from "react-redux";
+import { TopAnimeApi } from "../utilis/constnce";
+import appStore from "../utilis/appStore";
+import Fetching from "../utilis/Fetching";
+
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
+    <Provider store={appStore}>
     <div>
       <Header></Header>
+      <Fetching api={TopAnimeApi}/>
       <Outlet />
       <Footer></Footer>
     </div>
+    </Provider>
   );
 }
 

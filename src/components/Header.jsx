@@ -2,10 +2,18 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
 import { IoMdSearch } from "react-icons/io";
+import { FaBookmark ,FaRegBookmark  } from "react-icons/fa";
+import SearchBar from "./SearchBar";
+import { BiSolidSearchAlt2 } from "react-icons/bi";
 
 const Header = () => {
   const [input, setInput] = useState("");
+  const [search,setSearch] = useState(true)
   console.log(input);
+
+  function handelSearch(){
+    setSearch(!search);
+  }
 
   return (
     <header className="header w-full flex justify-center content-center sticky top-0 z-50">
@@ -15,15 +23,16 @@ const Header = () => {
         Nimory
       </div></Link>
 
-      <nav className="h-12 flex  border-2 pl-4 pr-4 rounded-full items-center font-bold bg-white">
+{  search ?    <nav className="h-12 flex  border-2 pl-4 pr-4 rounded-full items-center font-bold bg-white">
         <Link to="/" className="hover-effect">HOME</Link>
         <Link to="/about" className="hover-effect">ABOUT</Link>
         <Link to="/manga" className="hover-effect">MANGA</Link>
         <Link to="/movies" className="hover-effect">MOVIES</Link>
-      </nav>
+      </nav> : <SearchBar />}
 
-      <div className="pr-36">
-        <button className="searchbut"><IoMdSearch className="h-8 w-8" /></button>
+      <div className="pr-36 flex justify-center items-center gap-5">
+        <button className="searchbut" onClick={handelSearch} >{search ? <IoMdSearch className="h-8 w-8 hover:scale-120 " />:<BiSolidSearchAlt2 className="h-8 w-8 hover:scale-120"/>}</button>
+        <Link to="/bookmark"><FaRegBookmark className="h-6 w-6 hover:scale-120"/></Link>
       </div>
     </header>
   );

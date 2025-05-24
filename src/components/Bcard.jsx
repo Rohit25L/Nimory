@@ -2,6 +2,7 @@ import React from "react";
 import "../css/Card.css";
 import VanillaTilt from "vanilla-tilt";
 
+
 function Bcard({ image, title, episodes, status, rating, rank }) {
   const cardRef = React.useRef(null);
 

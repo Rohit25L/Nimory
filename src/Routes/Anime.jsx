@@ -4,25 +4,41 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import useSpecific from "../../utilis/useSpecific";
 import { SpecificAnimeApi } from "../../utilis/constnce";
+import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import { SlControlPlay } from "react-icons/sl";
+import { additems } from "../../utilis/bookmarkSlice";
+import { removeitems } from "../../utilis/bookmarkSlice";
 
 import React from "react";
+import { useDispatch } from "react-redux";
 
 const Anime = () => {
   const { l_id } = useParams();
   const [readmore, setReadmore] = useState(true);
+  const [clicked, setClicked] = useState(false);
 
   const vol = useSpecific(SpecificAnimeApi, l_id);
-  console.log(vol);
+
   const z = String(vol.synopsis);
 
   function readText() {
     setReadmore(!readmore);
   }
+  const dispatch = useDispatch();
+  function handelDispatch(vol) {
+    if (clicked == false) {
+      dispatch(additems(vol));
+    } else {
+      dispatch(removeitems(vol))
+    }
+    setClicked(!clicked);
+    console.log(clicked);
+  }
 
   return (
     <div className="w-full flex justify-center pt-10 pb-10">
-      <div className="bg-neutral-100 w-7/8 flex rounded-3xl">
-        <div className="p-20 h-[600px] w-1/2 sm:w-[400px]">
+      <div className="bg-neutral-100 w-7/8 flex rounded-3xl flex-wrap">
+        <div className="p-20 h-fit-contet w-1/2 sm:w-[400px] ">
           <img
             src={vol?.images?.jpg?.large_image_url}
             alt="images"
@@ -39,12 +55,32 @@ const Anime = () => {
                 {readmore ? "...read more" : "...show less"}{" "}
               </span>
             </p>
-            <div className="flex flex-row bg-black text-cyan-50">
-              <button>fcgfcgf</button>
-              <button> hvgh</button>{" "}
+            <div className="flex flex-row gap-10 pt-10  w-180">
+              {!clicked ? (
+                <button
+                  className="h-13 border-2 border-red-400 rounded-2xl w-80 flex items-center justify-center gap-2"
+                  onClick={() => handelDispatch(vol)}
+                >
+                  <FaRegBookmark className="" />
+                  Bookmark
+                </button>
+              ) : (
+                <button
+                  className="h-13 bg-red-400 rounded-2xl w-80 flex items-center justify-center gap-2"
+                  onClick={() => handelDispatch(vol)}
+                >
+                  <FaBookmark className="" />
+                  Bookmarked
+                </button>
+              )}
+              <button className="h-13 border-2 border-red-300 bg-red-400 rounded-2xl w-80 flex items-center justify-center gap-2">
+                <SlControlPlay />
+                Watch Trailer
+              </button>{" "}
             </div>
           </div>
         </div>
+        <div></div>
       </div>
     </div>
   );
