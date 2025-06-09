@@ -1,1 +1,44 @@
+# Nimory
 
+# Features
+    - main page
+        -header
+        -movie Trailer and about and info
+        -top Anime
+        -tranding animes
+        -upcoming
+        -most popular
+        -top airing
+    -manga
+        -bachground big mange series -10
+        - manga cards
+        - top mangas
+        - on goings mangas
+    -bookmark
+        - thing you have bookmarked
+        - seperated
+            -anime
+            -mange
+            -movies
+        - remove button
+
+    - search bar
+        - on click search bar will apper
+        - onlick of seach bar recomadtion of typing will apper
+        - on enter a page will open with anime related to yoour search
+    - single anime page
+        -about anime
+        -2 buttons
+            - watch now
+                - show a youtube trailer
+                    - in future i am thinking of making where it will show all episodes of that anime
+            - bookmark
+        - recomendations of other animes
+        - news related to that anime
+    -Top anime && tranding animes && upcoming
+        - top animes with big w and h
+        - anime cards
+            - onclick it will take single page anime
+        - infinite scorrling
+    - filters like (sports , action , drama  , etc) genras
+        - onclick it will only show anime of that catagories

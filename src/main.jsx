@@ -6,14 +6,16 @@ import Body from "./components/Body";
 import About from "../src/Routes/About";
 import Anime from "./Routes/Anime.jsx";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
-import { lazy,Suspense} from "react";
+import { lazy, Suspense } from "react";
 import Simmer from "./components/Simmers.jsx";
 import Chipsinput from "./components/Chipsinput.jsx";
 import Bookmark from "./components/Bookmark.jsx";
+import AnimatedBars from "./Routes/AnimatedBars.jsx";
+import { TopAnimeApi } from "../utilis/constnce.jsx";
 
-
-const Manga =lazy(()=>import("../src/Routes/Manga.jsx"))
-const Movies =lazy(()=>import("./Routes/Movies.jsx"))
+const Manga = lazy(() => import("../src/Routes/Manga.jsx"));
+const Movies = lazy(() => import("./Routes/Movies.jsx"));
+const Topanime = lazy(() => import("./components/Topanime.jsx"));
 let route = createBrowserRouter([
   {
     path: "/",
@@ -29,17 +31,25 @@ let route = createBrowserRouter([
       },
       {
         path: "/movies",
-        element: <Suspense fallback={<h1>loading...</h1>}><Movies /></Suspense>,
+        element: (
+          <Suspense fallback={<h1>loading...</h1>}>
+            <Movies />
+          </Suspense>
+        ),
       },
       {
         path: "/manga",
-        element: <Suspense fallback={<Simmer/>}><Manga /></Suspense>,
+        element: (
+          <Suspense fallback={<Simmer />}>
+            <Manga />
+          </Suspense>
+        ),
       },
       {
         path: "/anime/:l_id",
         element: <Anime />,
       },
-           {
+      {
         path: "/input",
         element: <Chipsinput />,
       },
@@ -47,7 +57,18 @@ let route = createBrowserRouter([
         path: "/bookmark",
         element: <Bookmark />,
       },
-
+      {
+        path: "/animatedbars",
+        element: <AnimatedBars />,
+      },
+      {
+        path: "/topanime",
+        element: (
+          <Suspense fallback={<Simmer/>}>
+            <Topanime />
+          </Suspense>
+        ),
+      },
     ],
   },
 ]);

@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addFetch } from "./fetchData";
-
+import SimmerBody from "../src/components/ChildComponents/SimmerBody";
+import TopanimeSimmers from "../src/components/ChildComponents/TopanimeSimmers";
 const Fetching = () => {
   const [page, setPage] = useState(1);
   const [dataa, setDataa] = useState([]);
   const dispatch = useDispatch();
+  const [fetching, setFetching] = useState(true);
 
   async function animeFetch() {
     try {
@@ -18,6 +20,7 @@ const Fetching = () => {
       if (page == 1) {
         dispatch(addFetch(specificdata?.data));
       }
+      setFetching(false);
     } catch (error) {
       console.error(error);
     }
@@ -28,6 +31,7 @@ const Fetching = () => {
       window.innerHeight + document.documentElement.scrollTop + 1 >
       document.documentElement.scrollHeight
     ) {
+      setFetching(true);
       setPage((p) => p + 1);
     }
   };
@@ -42,8 +46,19 @@ const Fetching = () => {
     return () => window.removeEventListener("scroll", handelScroll);
   }, []);
   dispatch(addFetch(dataa));
+  console.log("fething")
 
-  return <div></div>;
+  return (
+    <div>
+      {fetching && (
+        <div className="flex w-full justify-center">
+          <div className="w-7/8 flex justify-center flex-wrap gap-5">
+            <TopanimeSimmers />
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Fetching;
