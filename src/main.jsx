@@ -12,6 +12,7 @@ import Chipsinput from "./components/Chipsinput.jsx";
 import Bookmark from "./components/Bookmark.jsx";
 import AnimatedBars from "./Routes/AnimatedBars.jsx";
 import { TopAnimeApi } from "../utilis/constnce.jsx";
+import Login from "./components/Login/Login.jsx";
 
 const Manga = lazy(() => import("../src/Routes/Manga.jsx"));
 const Movies = lazy(() => import("./Routes/Movies.jsx"));
@@ -68,6 +69,11 @@ let route = createBrowserRouter([
             <Topanime />
           </Suspense>
         ),
+      },
+      {
+        path: "/login",
+        element: <Login />
+
       },
     ],
   },
