@@ -16,8 +16,8 @@ const Header = () => {
   }
 
   return (
-    <header className="header w-full flex justify-center content-center sticky top-0 z-50">
-      <Link to="/" className="pl-22"><div className="logo pl-4 bg-white pr-4 rounded-full border-2">
+    <div className="w-full flex sticky top-0 z-50 h-20 justify-evenly items-center">
+      <Link to="/"><div className="logo pl-4 bg-white pr-4 rounded-full border-2 ">
         {" "}
         <img className="w-[40px]" src="/logo.png" />
         Nimory
@@ -30,11 +30,11 @@ const Header = () => {
         <Link to="/movies" className="hover-effect">MOVIES</Link>
       </nav> : <SearchBar />}
 
-      <div className="pr-36 flex justify-center items-center gap-5">
+      <div className="flex justify-center items-center gap-5">
         <button className="searchbut" onClick={handelSearch} >{search ? <IoMdSearch className="h-8 w-8 hover:scale-120 " />:<BiSolidSearchAlt2 className="h-8 w-8 hover:scale-120"/>}</button>
         <Link to="/bookmark"><FaRegBookmark className="h-6 w-6 hover:scale-120"/></Link>
       </div>
-    </header>
+    </div>
   );
 };
 

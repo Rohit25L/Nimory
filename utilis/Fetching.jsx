@@ -37,8 +37,9 @@ const Fetching = () => {
   };
 
   useEffect(() => {
-    animeFetch();
-    console.log("useeffect");
+      animeFetch();
+    document.documentElement.scrollTop =
+      document.documentElement.scrollTop - 500;
   }, [page]);
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const Fetching = () => {
     return () => window.removeEventListener("scroll", handelScroll);
   }, []);
   dispatch(addFetch(dataa));
-  console.log("fething")
+  console.log("fething");
 
   return (
     <div>

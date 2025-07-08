@@ -70,12 +70,10 @@ let route = createBrowserRouter([
           </Suspense>
         ),
       },
-      {
-        path: "/login",
-        element: <Login />
-
-      },
     ],
+  },
+  {path: "/login",
+    element:<Login />
   },
 ]);
 createRoot(document.getElementById("root")).render(
