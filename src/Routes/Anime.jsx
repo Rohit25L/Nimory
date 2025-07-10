@@ -3,7 +3,6 @@ import "../css/anime.css";
 import { useState } from "react";
 import { useParams } from "react-router";
 import useSpecific from "../../utilis/useSpecific";
-import { SpecificAnimeApi } from "../../utilis/constnce";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { SlControlPlay } from "react-icons/sl";
 import { additems } from "../../utilis/bookmarkSlice";
@@ -16,10 +15,24 @@ const Anime = () => {
   const { l_id } = useParams();
   const [readmore, setReadmore] = useState(true);
   const [clicked, setClicked] = useState(false);
+  const [vol, setVol] = useState([]);
 
-  const vol = useSpecific(SpecificAnimeApi, l_id);
+  console.log(l_id)
 
-  const z = String(vol.synopsis);
+  useEffect(() => {
+    animeFetch();
+    console.log("useSpecific");
+  }, []);
+
+  async function animeFetch() {
+    try {
+      const responce1 = await fetch("https://api.jikan.moe/v4/anime/" + l_id);
+      const specificdata = await responce1.json();
+      setVol(specificdata.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   function readText() {
     setReadmore(!readmore);
@@ -29,11 +42,12 @@ const Anime = () => {
     if (clicked == false) {
       dispatch(additems(vol));
     } else {
-      dispatch(removeitems(vol))
+      dispatch(removeitems(vol));
     }
     setClicked(!clicked);
     console.log(clicked);
   }
+  const z = String(vol.synopsis);
 
   return (
     <div className="w-full flex justify-center pt-10 pb-10">
@@ -57,10 +71,7 @@ const Anime = () => {
             </p>
             <div className="flex flex-row gap-10 pt-10  w-180">
               {!clicked ? (
-                <button
-                  className="h-13 border-2 border-red-400 rounded-2xl w-80 flex items-center justify-center gap-2"
-                  onClick={() => handelDispatch(vol)}
-                >
+                <button className="h-13 border-2 border-red-400 rounded-2xl w-80 flex items-center justify-center gap-2" onClick={()=>handelDispatch(vol)}>
                   <FaRegBookmark className="" />
                   Bookmark
                 </button>

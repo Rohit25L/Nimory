@@ -26,6 +26,11 @@ const Login = () => {
           </button>
         </div>
       </div>
+      <div className= "h-20 absolute top-1/3 left-60 z-5 flex flex-col items-center">
+        <h1 className=" text-white font-extrabold text-6xl">
+         Watch your favorite anime,</h1><h1 className="text-white font-extrabold text-6xl">movies and Read manga here</h1>
+
+      </div>
       <Backgroung />
     </div>
   );

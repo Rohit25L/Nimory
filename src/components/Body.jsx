@@ -52,7 +52,7 @@ const Body = () => {
         {photos.slice(0,6).map((photo) => (
           <Link
             className="linkre"
-            to={"/anime/" + photo?.malid}
+            to={"/anime/" + photo?.mal_id}
             key={photo?.mal_id}
           >
             <Bcard

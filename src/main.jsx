@@ -10,7 +10,6 @@ import { lazy, Suspense } from "react";
 import Simmer from "./components/Simmers.jsx";
 import Chipsinput from "./components/Chipsinput.jsx";
 import Bookmark from "./components/Bookmark.jsx";
-import AnimatedBars from "./Routes/AnimatedBars.jsx";
 import { TopAnimeApi } from "../utilis/constnce.jsx";
 import Login from "./components/Login/Login.jsx";
 
@@ -57,10 +56,6 @@ let route = createBrowserRouter([
       {
         path: "/bookmark",
         element: <Bookmark />,
-      },
-      {
-        path: "/animatedbars",
-        element: <AnimatedBars />,
       },
       {
         path: "/topanime",

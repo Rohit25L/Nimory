@@ -1,16 +1,14 @@
-import { GiCrossedBones } from "react-icons/gi";
+import { GiTireIronCross } from "react-icons/gi";
 
-const Booked = () => {
+const Booked = ({img}) => {
   return (
     <div
-      className=" w-50 flex flex-col justify-center items-center pt-5 ml-10 rounded-2xl gap-3 mb-5"
+      className="w-50 h-70 flex pt-5 ml-10 rounded-2xl gap-3 mb-5"
     >
-      <button className="relative top-13 -right-14 bg-white border-2 border-black p-2 rounded-4xl">
-        <GiCrossedBones />
+      <button className="relative top-3 left-45 bg-white p-2 rounded-4xl h-8">
+        <GiTireIronCross />
       </button>
-      <img src="/"className="w-40 rounded-2xl" />
-
-      {/* <p className="pl-5 font-bold">{k.title_english.slice(0, 30)}</p> */}
+      <img src={img} className="w-45 h-70 rounded-2xl" />
     </div>
   );
 };
