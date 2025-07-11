@@ -27,7 +27,7 @@ function Bcard({ image, title, episodes, status, rating, rank }) {
 
   return (
     <div className="anime-card" ref={cardRef}>
-      <img src={image} alt={title} className="anime-image"></img>
+      <img src={image} alt={title} className="w-40 h-60 rounded-2xl"></img>
 
       <div className="anime-info">
         <p className="anime-status">{status}</p>

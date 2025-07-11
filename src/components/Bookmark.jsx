@@ -28,7 +28,7 @@ const Bookmark = () => {
         ) : (
           <div className="flex flex-wrap">
             {book.map((ani) => (
-              <Booked img={ani.images.jpg.image_url} />
+              <Booked img={ani.images.jpg.image_url} id={ani.mal_id}  />
             ))}
           </div>
         )}

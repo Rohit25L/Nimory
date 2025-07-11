@@ -9,7 +9,7 @@ import { AiOutlineDoubleRight } from "react-icons/ai";
 
 const Body = () => {
   const photos = useSelector((e) => e.apiData);
-  console.log(photos);
+  // console.log(photos);
   return photos.length == 0 ? (
     <Simmer />
   ) : (

@@ -9,19 +9,28 @@ import { additems } from "../../utilis/bookmarkSlice";
 import { removeitems } from "../../utilis/bookmarkSlice";
 
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Anime = () => {
   const { l_id } = useParams();
   const [readmore, setReadmore] = useState(true);
   const [clicked, setClicked] = useState(false);
   const [vol, setVol] = useState([]);
+  let a = false;
 
-  console.log(l_id)
+  const cache = useSelector((e) => e.bookmark.items);
+  console.log(cache);
+
+  useEffect(() => {
+    cache.map((cac) => {
+      if (cac.mal_id == l_id) {
+        setClicked(true);
+      }
+    });
+  }, []);
 
   useEffect(() => {
     animeFetch();
-    console.log("useSpecific");
   }, []);
 
   async function animeFetch() {
@@ -41,11 +50,12 @@ const Anime = () => {
   function handelDispatch(vol) {
     if (clicked == false) {
       dispatch(additems(vol));
-    } else {
-      dispatch(removeitems(vol));
     }
     setClicked(!clicked);
-    console.log(clicked);
+  }
+  function handelremoveDispatch(vol) {
+    dispatch(removeitems(vol));
+    setClicked(!clicked);
   }
   const z = String(vol.synopsis);
 
@@ -71,14 +81,17 @@ const Anime = () => {
             </p>
             <div className="flex flex-row gap-10 pt-10  w-180">
               {!clicked ? (
-                <button className="h-13 border-2 border-red-400 rounded-2xl w-80 flex items-center justify-center gap-2" onClick={()=>handelDispatch(vol)}>
+                <button
+                  className="h-13 border-2 border-red-400 rounded-2xl w-80 flex items-center justify-center gap-2"
+                  onClick={() => handelDispatch(vol)}
+                >
                   <FaRegBookmark className="" />
                   Bookmark
                 </button>
               ) : (
                 <button
                   className="h-13 bg-red-400 rounded-2xl w-80 flex items-center justify-center gap-2"
-                  onClick={() => handelDispatch(vol)}
+                  onClick={() => handelremoveDispatch(vol)}
                 >
                   <FaBookmark className="" />
                   Bookmarked
