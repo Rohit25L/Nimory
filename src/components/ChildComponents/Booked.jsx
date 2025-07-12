@@ -2,10 +2,11 @@ import { GiTireIronCross } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import { removeitems } from "../../../utilis/bookmarkSlice";
 
-const Booked = ({ img, id }) => {
+const Booked = ({ img, id ,SetCheckdata ,checkdata}) => {
   const dispatch = useDispatch();
   function handelRemove() {
     dispatch(removeitems(id));
+    SetCheckdata(!checkdata)
   }
   return (
     <div className="w-50 h-70 flex pt-5 ml-10 rounded-2xl gap-3 mb-5">

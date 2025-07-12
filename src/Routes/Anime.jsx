@@ -54,7 +54,7 @@ const Anime = () => {
     setClicked(!clicked);
   }
   function handelremoveDispatch(vol) {
-    dispatch(removeitems(vol));
+    dispatch(removeitems(vol.mal_id));
     setClicked(!clicked);
   }
   const z = String(vol.synopsis);

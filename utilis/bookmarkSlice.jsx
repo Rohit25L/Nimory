@@ -10,10 +10,10 @@ const BookmarkSlice = createSlice({
       state.items.push(action.payload);
     },
     removeitems: (state, action) => {
-      console.log("removed" + action.payload.mal_id);
-      state.items.filter((item) => {
-       return item.mal_id != action.payload.mal_id});
+      console.log("removed" + state.items);
+      state.items = state.items.filter((item) => item.mal_id != action.payload);
     },
+
     clearitems: (state) => {
       state.items.length = 0;
     },
