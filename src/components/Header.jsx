@@ -15,8 +15,11 @@ const Header = () => {
     setSearch(!search);
   }
 
+  console.log(document.documentElement.scrollTop)
+
   return (
-    <div className="w-full flex sticky top-0 z-50 h-20 justify-evenly items-center">
+    <div className="w-full flex sticky top-0 z-50 h-17 justify-around items-center bg-gray-700 rounded-b-lg">
+
       <Link to="/"><div className="logo pl-4 bg-white pr-4 rounded-full border-2 ">
         {" "}
         <img className="w-[40px]" src="/logo.png" />
