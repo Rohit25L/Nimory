@@ -9,17 +9,16 @@ import { BiSolidSearchAlt2 } from "react-icons/bi";
 const Header = () => {
   const [input, setInput] = useState("");
   const [search,setSearch] = useState(true)
+   const [heeadbg,setHeadbg] = useState(false)
   console.log(input);
 
   function handelSearch(){
     setSearch(!search);
   }
 
-  console.log(document.documentElement.scrollTop)
 
   return (
-    <div className="w-full flex sticky top-0 z-50 h-17 justify-around items-center bg-gray-700 rounded-b-lg">
-
+    <div className='w-full flex sticky top-0 z-50 h-17 justify-around items-center rounded-b-lg' >
       <Link to="/"><div className="logo pl-4 bg-white pr-4 rounded-full border-2 ">
         {" "}
         <img className="w-[40px]" src="/logo.png" />
