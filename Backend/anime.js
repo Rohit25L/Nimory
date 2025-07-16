@@ -1,20 +1,24 @@
 const mong = require("mongoose");
 
 const topanimeSchema = new mong.Schema({
+  id: {
+    type: Number,
+    requird: true,
+  },
   name: {
-    type: String
+    type: String,
     // required: true,
   },
   rating: {
-    type: Number
+    type: Number,
   },
   img: {
-    type: String
+    type: String,
     // enum:["small","medium","large"],
     // required: true
   },
   episode: {
-    type: Number
+    type: Number,
     // required: true
   },
 });

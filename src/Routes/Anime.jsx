@@ -10,6 +10,7 @@ import { removeitems } from "../../utilis/bookmarkSlice";
 
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getdata } from "../../utilis/WatchlistDb";
 
 const Anime = () => {
   const { l_id } = useParams();
@@ -31,7 +32,14 @@ const Anime = () => {
 
   useEffect(() => {
     animeFetch();
+   savepostData()
+
   }, []);
+
+  const savepostData = async () => {
+    const res = await getdata()
+    console.log(res)
+  }
 
   async function animeFetch() {
     try {
@@ -42,6 +50,8 @@ const Anime = () => {
       console.error(error);
     }
   }
+
+  console.log(getdata())
 
   function readText() {
     setReadmore(!readmore);
